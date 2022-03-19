@@ -22,7 +22,7 @@ async function getQuote(){
             quoteText.classList.remove('long-quote');
         }
         quoteText.innerText = data.quoteText;
-        
+
         // If Author is blank, add "Unknown"
         if (data.quoteAuthor === '') {
             authorText.innerText = 'Unknown';
@@ -35,5 +35,18 @@ async function getQuote(){
         console.log("sorry, No quote data", error);
     }
 }
+
+// Tweet Quote
+function tweetQuote(){
+    const quote = quoteText.innerText;
+    const author = authorText.innerText;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+    window.open(twitterUrl, '_blank'); // window will open a new window
+}
+
+// Event Listeners
+newQuoteBtn.addEventListener('click', getQuote);
+twitterBtn.addEventListener('click', tweetQuote);
+
 // On Load
 getQuote();
