@@ -25,7 +25,7 @@ async function getQuote(){
     completeLoader();
 
     const proxyApi = 'https://cors-anywhere.herokuapp.com/' // this line use for errro removing
-    const apiUrl = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?method=getQuote&lang=en&format=json';
+    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
 
     try {
         const response = await fetch(proxyApi + apiUrl);
