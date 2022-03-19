@@ -5,11 +5,27 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
+// Loader
+function getLoader(){
+    loader.hidden = false; // dont show
+    quoteContainer.hidden = true; // hide container
+}
+
+// Hide Loader
+function completeLoader(){
+    if (!loader.hidden) {
+        quoteContainer.hidden = false; // show quote
+        loader.hidden = true; // hide loader
+    }
+}
+
 // Get Quote From API
 async function getQuote(){
     
+    completeLoader();
+
     const proxyApi = 'https://cors-anywhere.herokuapp.com/' // this line use for errro removing
-    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
+    const apiUrl = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?method=getQuote&lang=en&format=json';
 
     try {
         const response = await fetch(proxyApi + apiUrl);
@@ -30,6 +46,9 @@ async function getQuote(){
             authorText.innerText = data.quoteAuthor;
         }
         
+        // Stop Loader, Show Quote
+        completeLoader();
+
     } catch (error) {
         getQuote(); // Inspite of error, catch block will get new data
         console.log("sorry, No quote data", error);
