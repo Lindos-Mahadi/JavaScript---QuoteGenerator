@@ -7,7 +7,5 @@ Necessary Instruction
 6) https://forismatic.com/en/api/  
                         (for quote api)
 7) https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent               (twitter developer)
-8)
-9)
-10)
+
 
